@@ -79,55 +79,33 @@ IPL Ball-by-Ball Dataset (Kaggle)
 
 ## 📂 Project Structure
 
+```bash
 IPL-Win-Predictor/
-
-├── .devcontainer/
-
-│ └── devcontainer.json
-
-│
-
-├── data/
-
-│ ├── deliveries.csv
-
-│ ├── matches.csv
-
-│ └── README.md
-
-│
-
-├── images/
-
-│ └── screenshots
-
-│
-
-├── model/
-
-│ ├── ipl_model.pkl
-
-│ ├── encoders.pkl
-
-│ └── README.md
-
-│
-
-├── notebooks/
-
-│ └── analysis.ipynb
-
-│
-
-├── .gitignore
-
-├── README.md
-
-├── app.py
-
-├── requirements.txt
-
-└── train_model.py
+ ├── .devcontainer/
+ │ └── devcontainer.json
+ │
+ ├── data/
+ │ ├── deliveries.csv
+ │ ├── matches.csv
+ │ └── README.md
+ │
+ ├── images/
+ │ └── screenshots
+ │
+ ├── model/
+ │ ├── ipl_model.pkl
+ │ ├── encoders.pkl
+ │ └── README.md
+ │
+ ├── notebooks/
+ │ └── analysis.ipynb
+ │
+ ├── .gitignore
+ ├── README.md
+ ├── app.py
+ ├── requirements.txt
+ └── train_model.py
+```
 
 ---
 
