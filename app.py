@@ -155,23 +155,15 @@ details summary {
 MODEL_PATH = Path(__file__).parent / "model" / "ipl_model.pkl"
 ENCODER_PATH = Path(__file__).parent / "model" / "encoders.pkl"
 
-st.write("MODEL PATH:", MODEL_PATH)
-st.write("ENCODER PATH:", ENCODER_PATH)
-st.write("MODEL EXISTS:", MODEL_PATH.exists())
-st.write("ENCODER EXISTS:", ENCODER_PATH.exists())
-
 @st.cache_resource
 def load_model():
     try:
-        st.write("Loading model...")
 
         with open(MODEL_PATH, "rb") as f:
             model = pickle.load(f)
 
         with open(ENCODER_PATH, "rb") as f:
             encoders = pickle.load(f)
-
-        st.success("Model loaded successfully!")
 
         return model, encoders
 
