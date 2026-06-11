@@ -155,6 +155,11 @@ details summary {
 MODEL_PATH = Path(__file__).parent / "model" / "ipl_model.pkl"
 ENCODER_PATH = Path(__file__).parent / "model" / "encoders.pkl"
 
+st.write("MODEL PATH:", MODEL_PATH)
+st.write("ENCODER PATH:", ENCODER_PATH)
+st.write("MODEL EXISTS:", MODEL_PATH.exists())
+st.write("ENCODER EXISTS:", ENCODER_PATH.exists())
+
 @st.cache_resource
 def load_model():
     if MODEL_PATH.exists() and ENCODER_PATH.exists():
