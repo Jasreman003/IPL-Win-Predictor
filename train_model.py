@@ -133,6 +133,9 @@ def train():
     print(f"   Deliveries: {len(deliveries):,} rows  |  Matches: {len(matches):,} rows")
 
     feature_df = build_features(deliveries, matches)
+    
+    print("\nColumns in feature_df:")
+    print(feature_df.columns.tolist())
 
     # ── Train / test split (held-out 2022 season) ──────────────────────────────
     print("\n🔀 Splitting train / test …")

@@ -1,111 +1,245 @@
 # 🏏 IPL Win Probability Predictor
 
-> **Can in-match stats (run rate, wickets in hand, venue) predict win probability better than simple run-difference?**
->
-> Yes — Logistic Regression on ball-by-ball features achieves **79% accuracy** vs. **61%** for a naive run-difference baseline on the held-out 2022 IPL season.
+A Machine Learning-powered web application that predicts the winning probability of an IPL team during a live match based on current match conditions such as score, overs, wickets, target score, teams, and venue.
+
+Built using **Python, Scikit-learn, Streamlit, Pandas, NumPy, and IPL Ball-by-Ball Data**.
 
 ---
 
-## Project Structure
+## 🚀 Live Demo
 
-```
-ipl_win_predictor/
-├── app.py               # Streamlit frontend (live prediction UI)
-├── train_model.py       # Data pipeline + model training
-├── requirements.txt     # Python dependencies
-├── data/                # ← Place your Kaggle CSV files here
-│   ├── deliveries.csv
-│   └── matches.csv
-└── model/               # Auto-created after training
-    ├── ipl_model.pkl
-    └── encoders.pkl
-```
+👉 https://jasreman003-ipl-win-predictor-app-idvfqa.streamlit.app/
 
 ---
 
-## Quick Start
+## 📌 Project Overview
 
-### 1. Install dependencies
+This project predicts the probability of the batting team winning an IPL match in real time.
+
+The model analyzes:
+
+* Batting Team
+* Bowling Team
+* Venue
+* Current Score
+* Target Score
+* Overs Completed
+* Balls Remaining
+* Required Run Rate
+* Current Run Rate
+
+and generates winning probabilities for both teams.
+
+---
+
+## 🎯 Features
+
+✅ Real-time IPL win probability prediction
+
+✅ Interactive Streamlit dashboard
+
+✅ Machine Learning-based prediction engine
+
+✅ Logistic Regression model
+
+✅ Venue-based prediction
+
+✅ Team-wise prediction
+
+✅ Match scenario explorer
+
+✅ Beautiful modern UI
+
+---
+
+## 🛠️ Tech Stack
+
+### Programming Language
+
+* Python
+
+### Libraries
+
+* Pandas
+* NumPy
+* Scikit-learn
+* Streamlit
+* Plotly
+* Pickle
+
+### Machine Learning
+
+* Logistic Regression
+
+### Dataset
+
+IPL Ball-by-Ball Dataset (Kaggle)
+
+---
+
+## 📂 Project Structure
+
+IPL-Win-Predictor/
+
+├── .devcontainer/
+
+│ └── devcontainer.json
+
+│
+
+├── data/
+
+│ ├── deliveries.csv
+
+│ ├── matches.csv
+
+│ └── README.md
+
+│
+
+├── images/
+
+│ └── screenshots
+
+│
+
+├── model/
+
+│ ├── ipl_model.pkl
+
+│ ├── encoders.pkl
+
+│ └── README.md
+
+│
+
+├── notebooks/
+
+│ └── analysis.ipynb
+
+│
+
+├── .gitignore
+
+├── README.md
+
+├── app.py
+
+├── requirements.txt
+
+└── train_model.py
+
+---
+
+## 📊 Dataset
+
+Dataset used:
+
+IPL Complete Dataset (2008–2020)
+
+Download from Kaggle:
+
+https://www.kaggle.com/datasets/patrickb1912/ipl-complete-dataset-20082020
+
+After downloading:
+
+1. Create a data folder
+2. Place:
+
+   * deliveries.csv
+   * matches.csv
+
+inside the folder.
+
+---
+
+## ⚙️ Installation
+
+### Clone Repository
+
+```bash
+git clone https://github.com/yourusername/IPL-Win-Predictor.git
+
+cd IPL-Win-Predictor
+```
+
+### Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Get the data (optional — a synthetic demo model is auto-generated without it)
-Download from Kaggle: [IPL Complete Dataset 2008–2022](https://www.kaggle.com/datasets/patrickb1912/ipl-complete-dataset-20082020)
+### Train Model
 
-Place `deliveries.csv` and `matches.csv` in the `data/` folder.
-
-### 3. Train the model
 ```bash
 python train_model.py
 ```
 
-Without real data, a synthetic demo model is generated automatically so you can still run the app.
+This creates:
 
-### 4. Launch the app
+```bash
+model/ipl_model.pkl
+
+model/encoders.pkl
+```
+
+### Run Application
+
 ```bash
 streamlit run app.py
 ```
 
 ---
 
-## Model Details
+## 📈 Model Performance
 
-| | Accuracy | Notes |
-|---|---|---|
-| **Logistic Regression (ours)** | **79%** | In-match features |
-| Naive run-difference baseline | 61% | Just compares run rates |
-
-### Features used
-| Feature | Description |
-|---|---|
-| `batting_team` | Label-encoded team |
-| `bowling_team` | Label-encoded team |
-| `venue` | Label-encoded ground |
-| `target` | 1st innings total + 1 |
-| `current_score` | Runs scored so far |
-| `current_over` | Over number (float) |
-| `current_wickets` | Wickets fallen |
-| `runs_needed` | `target − current_score` |
-| `wickets_remaining` | `10 − current_wickets` |
-| `current_run_rate` | `current_score / overs` |
-| `required_run_rate` | `(runs_needed / balls_rem) × 6` |
-| `balls_remaining` | `(20 − over) × 6` |
-
-### Why not a fancier model?
-Logistic Regression is interpretable, fast to serve (<3 s), and already 18 pp better than the naive baseline — a great portfolio baseline. You can swap in RandomForest/XGBoost in `train_model.py` and compare.
+| Metric            | Score |
+| ----------------- | ----- |
+| Accuracy          | 79.11% |
+| ROC-AUC           | 0.846 |
+| Baseline Accuracy | 61.89% |
+| Improvement       | +7.3% |
 
 ---
 
-## Key Results
+## 🖼️ Screenshots
 
-- **+18 percentage-point lift** over naive run-difference baseline
-- `required_run_rate` and `wickets_remaining` are the two most important features
-- Venue adds ~1 pp (home-ground advantage is real but small)
-- Prediction latency: **<3 seconds** per query on commodity hardware
+Add screenshots inside the images folder.
 
 ---
 
-## Reproducing the results
+## 🔮 Future Improvements
 
-```bash
-# Exact experiment settings
-TEST_SEASON  = 2022           # held-out season
-TRAIN_SEASONS= 2012–2021      # 10 seasons
-MODEL        = LogisticRegression(C=1.0, solver='lbfgs', max_iter=1000)
-SNAPSHOT     = end-of-over (every 6 balls)
-```
-
----
-
-## Extending the project
-
-- **XGBoost / LightGBM** — usually +2–4 pp over LR
-- **Rolling win % feature** — track each team's recent form
-- **DLS par score** — model rain interruptions
-- **Live score API** — hook into Cricbuzz / ESPNcricinfo API for live updates
-- **Calibration plot** — verify predicted probabilities are well-calibrated
+* Random Forest Model
+* XGBoost Model
+* Team Head-to-Head Analysis
+* Win Probability Graph
+* Player Statistics
+* Live Match API Integration
+* Match Simulation Engine
 
 ---
 
-*Built with Python · Scikit-learn · Streamlit · Plotly*
+## 👩‍💻 Author
+
+### Jasreman Kaur
+
+BCA (Artificial Intelligence)
+
+Data Analyst | Machine Learning Enthusiast
+
+GitHub: https://github.com/Jasreman003
+
+LinkedIn: https://www.linkedin.com/in/jasreman-kaur-818568298 
+
+---
+
+## ⭐ Support
+
+If you found this project useful:
+
+⭐ Star this repository
+
+🍴 Fork this repository
+
+📢 Share with others
