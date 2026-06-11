@@ -3,10 +3,7 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Dataset files
-*.csv
-
-# Model files
-*.pkl
+data/*.csv
 
 venv/
 .env
