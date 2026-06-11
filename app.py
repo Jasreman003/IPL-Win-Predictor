@@ -167,9 +167,8 @@ def load_model():
 
         return model, encoders
 
-    except Exception as e:
-        st.error(f"Model loading failed: {e}")
-        return None, None
+    except Exception  as e:
+        st.warning("Model prediction unavailable, using fallback.")
     
 model, encoders = load_model()    
 
