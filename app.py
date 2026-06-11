@@ -162,15 +162,24 @@ st.write("ENCODER EXISTS:", ENCODER_PATH.exists())
 
 @st.cache_resource
 def load_model():
-    if MODEL_PATH.exists() and ENCODER_PATH.exists():
+    try:
+        st.write("Loading model...")
+
         with open(MODEL_PATH, "rb") as f:
             model = pickle.load(f)
+
         with open(ENCODER_PATH, "rb") as f:
             encoders = pickle.load(f)
-        return model, encoders
-    return None, None
 
-model, encoders = load_model()
+        st.success("Model loaded successfully!")
+
+        return model, encoders
+
+    except Exception as e:
+        st.error(f"Model loading failed: {e}")
+        return None, None
+    
+model, encoders = load_model()    
 
 # ── Teams & Venues ────────────────────────────────────────────────────────────
 TEAMS = [
