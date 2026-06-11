@@ -173,6 +173,9 @@ def load_model():
     
 model, encoders = load_model()    
 
+st.write("Venues in encoder:")
+st.write(list(encoders["venue"].classes_))
+
 # ── Teams & Venues ────────────────────────────────────────────────────────────
 TEAMS = [
     "Mumbai Indians", "Chennai Super Kings", "Royal Challengers Bangalore",
@@ -223,7 +226,7 @@ def predict_win_probability(batting_team, bowling_team, venue, target,
             bat_enc = encoders["team"].transform([batting_team])[0]
             bowl_enc = encoders["team"].transform([bowling_team])[0]
             venue_enc = encoders["venue"].transform([venue])[0]
-            
+
             features = np.array([[bat_enc, bowl_enc, venue_enc, target,
                                    current_score, current_over,
                                    runs_needed, current_rr,
