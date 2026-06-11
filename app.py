@@ -223,14 +223,17 @@ def predict_win_probability(batting_team, bowling_team, venue, target,
             bat_enc = encoders["team"].transform([batting_team])[0]
             bowl_enc = encoders["team"].transform([bowling_team])[0]
             venue_enc = encoders["venue"].transform([venue])[0]
+            
             features = np.array([[bat_enc, bowl_enc, venue_enc, target,
                                    current_score, current_over,
                                    runs_needed, current_rr,
                                    required_rr, balls_remaining]])
+            
             prob = model.predict_proba(features)[0][1]
             return float(prob), "model"
-        except Exception:
-            pass  # Fall through to heuristic
+        
+        except Exception  as e:
+            st.error(f"Prediction Error: {e}")
 
     # ── Heuristic fallback ──
     if runs_needed <= 0:
