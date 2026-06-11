@@ -173,9 +173,6 @@ def load_model():
     
 model, encoders = load_model()    
 
-st.write("Venues in encoder:")
-st.write(list(encoders["venue"].classes_))
-
 # ── Teams & Venues ────────────────────────────────────────────────────────────
 TEAMS = [
     "Mumbai Indians", "Chennai Super Kings", "Royal Challengers Bangalore",
@@ -186,15 +183,15 @@ TEAMS = [
 
 VENUES = [
     "Wankhede Stadium, Mumbai",
-    "M.A. Chidambaram Stadium, Chennai",
-    "M. Chinnaswamy Stadium, Bengaluru",
+    "MA Chidambaram Stadium, Chepauk, Chennai",
+    "M Chinnaswamy Stadium, Bengaluru",
     "Eden Gardens, Kolkata",
     "Arun Jaitley Stadium, Delhi",
-    "Rajiv Gandhi Intl. Cricket Stadium, Hyderabad",
+    "Rajiv Gandhi International Stadium, Uppal, Hyderabad",
     "Sawai Mansingh Stadium, Jaipur",
     "Punjab Cricket Association Stadium, Mohali",
-    "Ekana Cricket Stadium, Lucknow",
-    "Narendra Modi Stadium, Ahmedabad",
+    "Bharat Ratna Shri Atal Bihari Vajpayee Ekana Cricket Stadium, Lucknow",
+    "Narendra Modi Stadium, Ahmedabad"
 ]
 
 TEAM_COLORS = {
