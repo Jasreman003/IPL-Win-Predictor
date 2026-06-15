@@ -81,30 +81,42 @@ IPL Ball-by-Ball Dataset (Kaggle)
 
 ```bash
 IPL-Win-Predictor/
- ├── .devcontainer/
- │ └── devcontainer.json
- │
- ├── data/
- │ ├── deliveries.csv
- │ ├── matches.csv
- │ └── README.md
- │
- ├── images/
- │ └── screenshots
- │
- ├── model/
- │ ├── ipl_model.pkl
- │ ├── encoders.pkl
- │ └── README.md
- │
- ├── notebooks/
- │ └── analysis.ipynb
- │
- ├── .gitignore
- ├── README.md
- ├── app.py
- ├── requirements.txt
- └── train_model.py
+│
+├── .devcontainer/
+│   └── devcontainer.json
+│
+├── data/
+│   ├── deliveries.csv
+│   ├── matches.csv
+│   └── README.md
+│
+├── images/
+│   ├── App Overview.png
+│   ├── App Sidebar.png
+│   ├── Confusion Matrix.png
+│   ├── Correlation Heatmap.png
+│   ├── Feature Importance.png
+│   ├── Live Match Stats.png
+│   ├── Match State Input.png
+│   ├── Match Winners Distribution.png
+│   ├── Model Comparison.png
+│   ├── Most Successful IPL Teams.png
+│   ├── Scenario Explorer.png
+│   └── Target Score Distribution.png
+│
+├── model/
+│   ├── ipl_model.pkl
+│   ├── encoders.pkl
+│   └── README.md
+│
+├── notebooks/
+│   └── analysis.ipynb
+│
+├── .gitignore
+├── README.md
+├── app.py
+├── requirements.txt
+└── train_model.py
 ```
 
 ---
@@ -180,9 +192,49 @@ streamlit run app.py
 
 ---
 
-## 🖼️ Screenshots
+## 📱 Application Screenshots
 
-Add screenshots inside the images folder.
+### Home Dashboard
+
+#### App Overview
+![App Overview](images/App%20Overview.png)
+
+#### Sidebar
+![App Sidebar](images/App%20Sidebar.png)
+
+#### Match State Input
+![Match State Input](images/Match%20State%20Input.png)
+
+#### Live Match Stats
+![Live Match Stats](images/Live%20Match%20Stats.png)
+
+#### Scenario Explorer
+![Scenario Explorer](images/Scenario%20Explorer.png)
+
+---
+
+## 📊 Exploratory Data Analysis
+
+### Most Successful IPL Teams
+![Most Successful IPL Teams](images/Most%20Successful%20IPL%20Teams.png)
+
+### Match Winners Distribution
+![Match Winners Distribution](images/Match%20Winners%20Distribution.png)
+
+### Target Score Distribution
+![Target Score Distribution](images/Target%20Score%20Distribution.png)
+
+### Correlation Heatmap
+![Correlation Heatmap](images/Correlation%20Heatmap.png)
+
+### Model Comparison
+![Model Comparison](images/Model%20Comparison.png)
+
+### Confusion Matrix
+![Confusion Matrix](images/Confusion%20Matrix.png)
+
+### Feature Importance
+![Feature Importance](images/Feature%20Importance.png)
 
 ---
 
